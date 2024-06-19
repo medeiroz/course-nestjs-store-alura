@@ -3,7 +3,6 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductsRepositoryInterface } from './repositories/products.repository.interface';
 import { Product } from './entities/product.entity';
-import { v4 as uuid } from 'uuid';
 import { UsersService } from './../users/users.service';
 import { UserNotFoundException } from 'src/users/exceptions/user-not-found.exception';
 
@@ -23,17 +22,14 @@ export class ProductsService {
     }
 
     const entity = new Product();
-    entity.id = uuid();
     entity.created_by = user;
     entity.name = createProductDto.name;
     entity.price = createProductDto.price;
     entity.stock = createProductDto.stock;
     entity.description = createProductDto.description;
     entity.category = createProductDto.category;
-    entity.characteristics = createProductDto.characteristics;
-    entity.images = createProductDto.images;
-    entity.created_at = new Date();
-    entity.updated_at = new Date();
+    // entity.characteristics = createProductDto.characteristics;
+    // entity.images = createProductDto.images;
 
     return await this.productsRepository.create(entity);
   }

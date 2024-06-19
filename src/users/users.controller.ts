@@ -10,7 +10,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ListUserDto } from './dto/list-user.dto';
+import { UserNotFoundException } from './exceptions/user-not-found.exception';
 
 @Controller('users')
 export class UsersController {
@@ -20,29 +20,25 @@ export class UsersController {
   async create(@Body() createUserDto: CreateUserDto) {
     const user = await this.usersService.create(createUserDto);
     return {
-      user: new ListUserDto(user.id, user.name),
+      user,
       message: 'User created successfully!',
     };
   }
 
   @Get()
-  async findAll() {
-    const users = await this.usersService.findAll();
-
-    return users.map((user) => new ListUserDto(user.id, user.name));
+  findAll() {
+    return this.usersService.getAll();
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    const user = await this.usersService.findOne(id);
+    const user = await this.usersService.getById(id);
 
     if (!user) {
-      return {
-        message: 'User not found!',
-      };
+      throw new UserNotFoundException();
     }
 
-    return new ListUserDto(user.id, user.name);
+    return user;
   }
 
   @Patch(':id')
@@ -50,7 +46,7 @@ export class UsersController {
     const user = await this.usersService.update(id, updateUserDto);
 
     return {
-      user: new ListUserDto(id, user.name),
+      user,
       message: 'User updated successfully',
     };
   }

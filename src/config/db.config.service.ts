@@ -1,17 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
+import { join } from 'path';
 
 @Injectable()
 export class DbConfigService implements TypeOrmOptionsFactory {
   constructor(private readonly configService: ConfigService) {}
 
   createTypeOrmOptions(): Promise<TypeOrmModuleOptions> | TypeOrmModuleOptions {
+    const database = this.configService.get<string>('DB_NAME');
+    const appEnv = this.configService.get<string>('APP_ENV');
+
     return {
       type: 'sqlite',
-      database: this.configService.get<string>('DB_NAME'),
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      database,
+      entities: [join(__dirname, '/../**/**.entity{.ts,.js}')],
+      synchronize: appEnv === 'development',
     };
   }
 }

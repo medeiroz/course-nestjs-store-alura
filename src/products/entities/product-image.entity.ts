@@ -7,19 +7,16 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity({ name: 'users' })
-export class User {
+@Entity('product_images')
+export class ProductImage {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: 255 })
-  name: string;
+  @Column({ type: 'text', length: 1000 })
+  url: string;
 
-  @Column({ length: 255 })
-  email: string;
-
-  @Column({ length: 255 })
-  password: string;
+  @Column({ type: 'text', length: 3000 })
+  description: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
