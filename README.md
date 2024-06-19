@@ -1,73 +1,117 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Nest.js Restful API Course Repository
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Welcome to the repository for the `Nest.js Creating a Restful API` course taken on Alura. This repository contains the code and resources associated with the course, covering essential concepts for building a restful API with Nest.js. You'll find everything from project setup to routes, controllers, DTOs, data validation, data transformation, decorators, and pipes using TypeScript. Below is a detailed outline of the course content:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Table of Contents
 
-## Description
+1. [Chapter 1 - Getting to Know Nest.js](#chapter-1---getting-to-know-nestjs)
+2. [Chapter 2 - Creating First Endpoints](#chapter-2---creating-first-endpoints)
+3. [Chapter 3 - Synchronous Validation](#chapter-3---synchronous-validation)
+4. [Chapter 4 - Asynchronous Validation](#chapter-4---asynchronous-validation)
+5. [Chapter 5 - Finalizing CRUD](#chapter-5---finalizing-crud)
+6. [Instructions to Run the Project](#instructions-to-run-the-project)
+7. [Available Endpoints](#available-endpoints)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Chapter 1 - Getting to Know Nest.js
 
-## Installation
+- **Introduction**: A brief overview to the chapter.
+- **Setting Up the Environment**: Instructions for installing Nest.js.
+- **Creating the Project**: Steps to create a new project.
+- **Conclusion**: Summary of the chapter and next steps.
+
+## Chapter 2 - Creating First Endpoints
+
+- **User Registration**: Creating an endpoint for user registration.
+- **Capturing POST Data**: Techniques for capturing data from POST requests.
+- **Listing Users**: Creating an endpoint to list users.
+- **User Module**: Developing a module for user management.
+- **Modular Monoliths**: Discussion on the architecture of modular monoliths.
+- **Dependency Injection**: Implementing dependency injection in Nest.js.
+- **SOLID**: Introduction to SOLID principles.
+- **Conclusion**: Summary of the chapter and next steps.
+
+## Chapter 3 - Synchronous Validation
+
+- **Validations**: Introduction to data validations in Nest.js.
+- **Pipes**: Overview of using pipes for data transformation and validation.
+- **User Validation**: Implementing user data validation.
+- **DTO (Data Transfer Object)**: Introduction and usage
+- **Conclusion**: Summary of the chapter and next steps.
+
+## Chapter 4 - Asynchronous Validation
+
+- **Asynchronous Validations**: Implementing asynchronous data validations.
+- **Limits of Synchronous Validation**: Exploring the limitations of synchronous validation.
+- **Email Validation**: Implementing asynchronous unique email validation.
+- **Conclusion**: Summary of the chapter and next steps.
+
+## Chapter 5 - Finalizing CRUD
+
+- **Entity**: Introduction to entity management.
+- **Updating User**: Steps to update user data.
+- **PATCH vs PUT**: Understanding the difference between PATCH and PUT methods.
+- **DELETE**: Implementing user deletion.
+- **API Versioning**: Overview of API versioning techniques.
+- **Conclusion**: Summary of the chapter and next steps.
+
+This repository serves as a practical resource for storing the coursework and exercises from the course. Feel free to explore the chapters, download the code, and use it as a reference for your own Nest.js projects.
+
+**Enjoy the course and keep learning and building with Nest.js!**
+
+# Instructions to Run the Project
+
+## Prerequisites
+
+Ensure you have Node.js installed. Follow the [Node.js installation guide](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs)if you haven't installed it yet.
+
+## Install and Configure Node
+
+## Clone the Project
 
 ```bash
-$ npm install
+git clone git@github.com:medeiroz/course-nestjs-store-alura.git
 ```
 
-## Running the app
+## Install Dependencies and Run the Project
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+cd course-nestjs-store-alura
+npm install
+npm run start:dev
 ```
 
-## Test
+## Access the Project
 
-```bash
-# unit tests
-$ npm run test
+Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
 
-# e2e tests
-$ npm run test:e2e
+## Available Endpoints
 
-# test coverage
-$ npm run test:cov
+List Users
+
+```http
+GET http://localhost:3000/users
 ```
 
-## Support
+User Registration
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```http
+POST http://localhost:3000/users
+```
 
-## Stay in touch
+Update User
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```http
+PATCH http://localhost:3000/users/:id
+```
 
-## License
+Delete User
 
-Nest is [MIT licensed](LICENSE).
+```http
+DELETE http://localhost:3000/users/:id
+```
+
+Get User by ID
+
+```http
+GET http://localhost:3000/users/:id
+```
