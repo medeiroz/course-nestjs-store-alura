@@ -1,6 +1,6 @@
 # Nest.js Restful API Course Repository
 
-Welcome to the repository for the `Nest.js Creating a Restful API` course taken on Alura. This repository contains the code and resources associated with the course, covering essential concepts for building a restful API with Nest.js. You'll find everything from project setup to routes, controllers, DTOs, data validation, data transformation, decorators, and pipes using TypeScript. Below is a detailed outline of the course content:
+Welcome to the repository for the [Nest.js Creating a Restful API](https://cursos.alura.com.br/course/nestjs-criando-api-resftul) course taken on Alura. This repository contains the code and resources associated with the course, covering essential concepts for building a restful API with Nest.js. You'll find everything from project setup to routes, controllers, DTOs, data validation, data transformation, decorators, and pipes using TypeScript. Below is a detailed outline of the course content:
 
 ## Table of Contents
 
