@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { User } from './../entities/user.entity';
 import { UsersRepositoryInterface } from './users.repository.interface';
+import { UserNotFoundException } from '../exceptions/user-not-found.exception';
 
 @Injectable()
-export class UserRepository implements UsersRepositoryInterface {
+export class UsersRepository implements UsersRepositoryInterface {
   private entries: User[] = [];
 
   async create(user: User): Promise<User> {
@@ -25,7 +26,7 @@ export class UserRepository implements UsersRepositoryInterface {
     const userFoundIndex = this.entries.findIndex((user) => user.id === id);
 
     if (userFoundIndex < 0) {
-      throw new Error('User not found');
+      throw new UserNotFoundException();
     }
 
     const userFound = this.entries[userFoundIndex];
@@ -38,7 +39,7 @@ export class UserRepository implements UsersRepositoryInterface {
   async remove(id: string): Promise<boolean> {
     const index = this.entries.findIndex((user) => user.id === id);
     if (index === -1) {
-      throw new Error('User not found');
+      throw new UserNotFoundException();
     }
     const user = this.entries[index];
     this.entries.splice(index, 1);

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
-import { UserRepository } from './repositories/users.repository';
+import { UsersRepository } from './repositories/users.repository';
 import { UniqueEmailValidator } from './validators/uniqueEmail.validator';
 
 @Module({
@@ -10,9 +10,10 @@ import { UniqueEmailValidator } from './validators/uniqueEmail.validator';
     UsersService,
     {
       provide: 'UsersRepositoryInterface',
-      useClass: UserRepository,
+      useClass: UsersRepository,
     },
     UniqueEmailValidator,
   ],
+  exports: [UsersService],
 })
 export class UsersModule {}

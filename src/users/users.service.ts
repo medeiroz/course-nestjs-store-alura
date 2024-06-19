@@ -33,6 +33,11 @@ export class UsersService {
     return await this.usersRepository.findOne(id);
   }
 
+  async exists(id: string): Promise<boolean> {
+    const user = await this.findOne(id);
+    return user !== undefined;
+  }
+
   async existsByEmail(email: string): Promise<boolean> {
     const user = await this.usersRepository.findByEmail(email);
     return user !== undefined;
