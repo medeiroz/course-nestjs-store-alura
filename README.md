@@ -86,6 +86,8 @@ Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
 
 ## Available Endpoints
 
+### Users
+
 List Users
 
 ```http
@@ -114,4 +116,36 @@ Get User by ID
 
 ```http
 GET http://localhost:3000/users/:id
+```
+
+### Users Products
+
+List User Products
+
+```http
+GET http://localhost:3000/users/:user/products
+```
+
+Add Product to User
+
+```http
+POST http://localhost:3000/users/:user/products
+```
+
+Update User Product
+
+```http
+PATCH http://localhost:3000/users/:user/products/:id
+```
+
+Delete User Product
+
+```http
+DELETE http://localhost:3000/users/:user/products/:id
+```
+
+Get User Product by ID
+
+```http
+GET http://localhost:3000/users/:user/products/:id
 ```
