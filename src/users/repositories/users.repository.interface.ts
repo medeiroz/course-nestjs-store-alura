@@ -5,11 +5,11 @@ export interface UsersRepositoryInterface {
 
   findAll(): Promise<User[]>;
 
-  findOne(id: number): Promise<User | undefined>;
+  findOne(id: string): Promise<User | undefined>;
 
-  update(id: number, user: User): Promise<User | undefined>;
+  update(id: string, user: Partial<User>): Promise<User>;
 
-  remove(id: number): Promise<User | undefined>;
+  remove(id: string): Promise<boolean>;
 
   findByEmail(email: string): Promise<User | undefined>;
 }

@@ -3,6 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersRepositoryInterface } from './repositories/users.repository.interface';
 import { User } from './entities/user.entity';
+import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class UsersService {
@@ -13,6 +14,7 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     const entity = new User();
+    entity.id = uuid();
     entity.name = createUserDto.name;
     entity.email = createUserDto.email;
     entity.password = createUserDto.password;
@@ -27,7 +29,7 @@ export class UsersService {
     return await this.usersRepository.findAll();
   }
 
-  async findOne(id: number): Promise<User | undefined> {
+  async findOne(id: string): Promise<User | undefined> {
     return await this.usersRepository.findOne(id);
   }
 
@@ -36,11 +38,12 @@ export class UsersService {
     return user !== undefined;
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto): Promise<boolean> {
-    return true;
+  async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+    return await this.usersRepository.update(id, updateUserDto);
   }
 
-  async remove(id: number): Promise<boolean> {
+  async remove(id: string): Promise<boolean> {
+    await this.usersRepository.remove(id);
     return true;
   }
 }

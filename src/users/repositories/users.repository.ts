@@ -15,27 +15,34 @@ export class UserRepository implements UsersRepositoryInterface {
     return this.entries;
   }
 
-  async findOne(id: number): Promise<User | undefined> {
+  async findOne(id: string): Promise<User | undefined> {
     return this.entries.find((user) => user.id === id);
   }
 
-  async update(id: number, user: User): Promise<User | undefined> {
-    const index = this.entries.findIndex((user) => user.id === id);
-    if (index === -1) {
-      return undefined;
+  async update(id: string, user: Partial<User>): Promise<User> {
+    delete user.id;
+
+    const userFoundIndex = this.entries.findIndex((user) => user.id === id);
+
+    if (userFoundIndex < 0) {
+      throw new Error('User not found');
     }
-    this.entries[index] = user;
-    return user;
+
+    const userFound = this.entries[userFoundIndex];
+
+    Object.assign(userFound, user);
+    this.entries[userFoundIndex] = userFound;
+    return userFound;
   }
 
-  async remove(id: number): Promise<User | undefined> {
+  async remove(id: string): Promise<boolean> {
     const index = this.entries.findIndex((user) => user.id === id);
     if (index === -1) {
-      return undefined;
+      throw new Error('User not found');
     }
     const user = this.entries[index];
     this.entries.splice(index, 1);
-    return user;
+    return user !== undefined;
   }
 
   async findByEmail(email: string): Promise<User | undefined> {
