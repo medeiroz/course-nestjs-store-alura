@@ -72,11 +72,24 @@ Ensure you have Node.js installed. Follow the [Node.js installation guide](https
 git clone git@github.com:medeiroz/course-nestjs-store-alura.git
 ```
 
-## Install Dependencies and Run the Project
+## Install Dependencies
 
 ```bash
 cd course-nestjs-store-alura
 npm install
+```
+
+## Configure the Database
+
+Copy the `.env.example` file to `.env` and configure the database connection.
+
+```bash
+cp .env.example .env
+```
+
+## Run the Project
+
+```bash
 npm run start:dev
 ```
 
