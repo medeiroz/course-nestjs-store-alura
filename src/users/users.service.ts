@@ -11,7 +11,7 @@ export class UsersService {
     private readonly usersRepository: UsersRepositoryInterface,
   ) {}
 
-  create(createUserDto: CreateUserDto): Promise<User> {
+  async create(createUserDto: CreateUserDto): Promise<User> {
     const entity = new User();
     entity.name = createUserDto.name;
     entity.email = createUserDto.email;
@@ -20,22 +20,27 @@ export class UsersService {
     entity.created_at = new Date();
     entity.updated_at = new Date();
 
-    return this.usersRepository.create(entity);
+    return await this.usersRepository.create(entity);
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll() {
+    return await this.usersRepository.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: number): Promise<User | undefined> {
+    return await this.usersRepository.findOne(id);
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async existsByEmail(email: string): Promise<boolean> {
+    const user = await this.usersRepository.findByEmail(email);
+    return user !== undefined;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async update(id: number, updateUserDto: UpdateUserDto): Promise<boolean> {
+    return true;
+  }
+
+  async remove(id: number): Promise<boolean> {
+    return true;
   }
 }
