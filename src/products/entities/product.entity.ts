@@ -5,9 +5,12 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   PrimaryGeneratedColumn,
+  OneToMany,
+  ManyToOne,
 } from 'typeorm';
 import { ProductCharacteristic } from './product-characteristic.entity';
 import { ProductImage } from './product-image.entity';
+import { User } from 'src/users/entities/user.entity';
 
 @Entity({ name: 'products' })
 export class Product {
@@ -29,19 +32,31 @@ export class Product {
   @Column({ length: 255 })
   category: string;
 
-  // characteristics: ProductCharacteristic[];
+  @Column({ length: 36 })
+  userId: string;
 
-  // images: ProductImage[];
+  @CreateDateColumn()
+  createdAt: Date;
 
-  @Column({ name: 'created_by', length: 255 })
-  created_by: string;
+  @UpdateDateColumn()
+  updatedAt: Date;
 
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt: string;
+  @DeleteDateColumn()
+  deletedAt: Date | null;
 
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: string;
+  @OneToMany(
+    () => ProductCharacteristic,
+    (productCharacteristic) => productCharacteristic.product,
+    { cascade: true, eager: true },
+  )
+  characteristics: ProductCharacteristic[];
 
-  @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: string;
+  @OneToMany(() => ProductImage, (productImage) => productImage.product, {
+    cascade: true,
+    eager: true,
+  })
+  images: ProductImage[];
+
+  @ManyToOne(() => User, (user) => user.products)
+  user: User;
 }

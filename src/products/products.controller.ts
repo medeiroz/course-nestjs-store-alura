@@ -30,12 +30,12 @@ export class ProductsController {
 
   @Get('')
   async findAll(@Param('user') user: string) {
-    return await this.productsService.findAll(user);
+    return await this.productsService.getAll(user);
   }
 
   @Get(':id')
   async findOne(@Param('user') user: string, @Param('id') id: string) {
-    const entry = await this.productsService.findOne(user, id);
+    const entry = await this.productsService.getByUserAndId(user, id);
 
     if (!entry) {
       return {
@@ -52,7 +52,7 @@ export class ProductsController {
     @Param('id') id: string,
     @Body() updateProductDto: UpdateProductDto,
   ) {
-    const entry = await this.productsService.update(user, id, updateProductDto);
+    const entry = await this.productsService.update(id, updateProductDto);
 
     return {
       product: entry,
@@ -62,7 +62,7 @@ export class ProductsController {
 
   @Delete(':id')
   async remove(@Param('user') user: string, @Param('id') id: string) {
-    await this.productsService.remove(user, id);
+    await this.productsService.delete(id);
 
     return {
       message: 'Product deleted successfully',

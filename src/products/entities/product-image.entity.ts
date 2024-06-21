@@ -5,7 +5,9 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   PrimaryGeneratedColumn,
+  ManyToOne,
 } from 'typeorm';
+import { Product } from './product.entity';
 
 @Entity('product_images')
 export class ProductImage {
@@ -18,12 +20,18 @@ export class ProductImage {
   @Column({ type: 'text', length: 3000 })
   description: string;
 
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt: string;
+  @Column({ length: 36 })
+  productId: string;
 
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: string;
+  @CreateDateColumn()
+  createdAt: Date;
 
-  @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: string;
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date | null;
+
+  @ManyToOne(() => Product, (product) => product.images)
+  product: Product;
 }
